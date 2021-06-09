@@ -1,30 +1,42 @@
 # BitcoinEurPronostico
 
-Proyecto para proposticar en precio del bitcoin de manera diaria en Euro.
+Proyecto para pronosticar en precio del bitcoin de manera diaria en Euro.
+
 
 Es necesario que se crear una BD en MySql.
 
+
 Debemos adaptar nuestro entorno virtual con TensorFlow en GPU.
 
-recomendacion: Modificar el numero de epocas.
+
+recomendación: Modificar el número de épocas.
+
 
 1.- Obtenemos mediante webScraping el valor del Bitcoin
 
-2.- Inserta esta informacion en BD.
 
-3.- Consultamos la BD y disponiblizamos la informacion
+2.- Inserta esta información en BD.
 
-4.- Normalizamos la informacion.
+
+3.- Consultamos la BD y cargamos la información
+
+
+4.- Normalizamos la información.
+
 
 5.- Definimos el modelo.
 
+
 6.- Ajustamos el modelo.
+
 
 7.- Predecimos.
 
-8.- Mostramos los datos mediante graficos.
 
-9.- Enviamos los datos por correo electronico.
+8.- Mostramos los datos mediante gráficos.
+
+
+9.- Enviamos los datos por correo electrónico.
 
 
 
