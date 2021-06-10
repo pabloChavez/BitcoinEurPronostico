@@ -1,9 +1,8 @@
 import numpy as np
 import math
 from sklearn.metrics import mean_squared_error
-
 from BitcoinPredict.WebScrapingBtc import informacionBtcOnline
-from ConnectMysql import coneccionDb
+from ConnectMysql import coneccionDb, insertDatosFinales
 from DeliveryEmail import deliveryEmail
 from NormalizacionDatos import normalizacionDatos
 from Practica.RNNLstmBtc import RedesNeuronalesLstm
@@ -52,7 +51,7 @@ graficoPerdidas(history)
 proximodia = tX[:1]
 proximodia = model.predict(proximodia)
 proximodia = escalado.inverse_transform(proximodia)
-proximodia = np.array(proximodia)
+pronostico = np.array(proximodia)
 
 # Realizacion de predicciones
 prediciones_entrenamiento = model.predict(tX)
@@ -81,11 +80,16 @@ plot_prediccion_test[:, :] = np.nan
 plot_prediccion_test[len(prediciones_entrenamiento)+(mirar_atras*2)+1:len(datos)-1, :] = prediciones_test
 
 # Concatenamos Prediccion Test Con Prediccion de 1 dias
-plot_prediccion_test = np.concatenate((plot_prediccion_test, proximodia))
+plot_prediccion_test = np.concatenate((plot_prediccion_test, pronostico))
 
 graficoConsolidado(escalado, datos, plot_prediccion_entrenamiento, plot_prediccion_test)
 
 datosUlt = escalado.inverse_transform(datos)
-datosUlt = datosUlt[-1]
+datosUlt = int(datosUlt[-1])
+puntuaciontrain = int(Puntuacion_Train)
+puntuaciontest = int(Puntuacion_Test)
+pronostico = int(pronostico)
 
-deliveryEmail(Puntuacion_Train, Puntuacion_Test, proximodia, datosUlt)
+insertDatosFinales(puntuaciontrain, puntuaciontest, pronostico)
+
+deliveryEmail(puntuaciontrain, puntuaciontest, pronostico, datosUlt)
