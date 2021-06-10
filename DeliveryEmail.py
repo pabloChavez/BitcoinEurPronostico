@@ -12,18 +12,18 @@ def deliveryEmail(puntuaciontrain, puntuaciontest, pronostico, datosUlt):
            "\n\n\nSaludos".format(puntuaciontrain, puntuaciontest, pronostico, datosUlt)
     msg = MIMEText(body)
 
-    msg['From'] = 'pablo.chavez1992@gmail.com'
-    msg['To'] = 'pablo.chavez1992@gmail.com'
+    msg['From'] = ''
+    msg['To'] = ''
     msg['Subject'] = 'Pronostico Bitcoin'
 
     # Reemplaza estos valores con tus credenciales de Google Mail
-    username = 'pablo.chavez1992@gmail.com'
-    password = 'pablo09291017'
+    username = ''
+    password = ''
 
     server = smtplib.SMTP('smtp.gmail.com',587)
     server.starttls()
     server.login(username, password)
-    server.sendmail('pablo.chavez1992@gmail.com','pablo.chavez1992@gmail.com' ,msg.as_string())
+    server.sendmail('','' ,msg.as_string())
     server.quit()
 
     return print('Mensaje enviado con exito')
