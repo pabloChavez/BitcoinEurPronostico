@@ -1,3 +1,4 @@
+from datetime import datetime
 import mysql.connector
 from pandas import DataFrame
 
@@ -21,5 +22,17 @@ def insertBtc(fecha, precioBtc):
     cursor = cnx.cursor()
     sql = "INSERT INTO bitcoinshist (fecha, euro) VALUES (%s, %s)"
     val = (fecha, precioBtc)
+    cursor.execute(sql, val)
+    cnx.commit()
+
+
+def insertDatosFinales(puntuaciontrain, puntuaciontest, proximodia):
+    cnx = mysql.connector.connect(user='root', password='1234',
+                                  host='127.0.0.1',
+                                  database='bitcoin')
+    cursor = cnx.cursor()
+    sql = "INSERT INTO datosfinales (puntuaciontrain, puntuaciontest, proximodia, fecha) VALUES (%s, %s, %s, %s)"
+    fecha = datetime.today().strftime('%Y-%m-%d')
+    val = (puntuaciontrain, puntuaciontest, proximodia, fecha)
     cursor.execute(sql, val)
     cnx.commit()
