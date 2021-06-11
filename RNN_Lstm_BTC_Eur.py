@@ -1,14 +1,14 @@
 import numpy as np
 import math
 from sklearn.metrics import mean_squared_error
-from BitcoinPredict.WebScrapingBtc import informacionBtcOnline
+from BitcoinPredict.Cryptomarket import informacionBtcOnline
 from ConnectMysql import coneccionDb, insertDatosFinales
 from DeliveryEmail import deliveryEmail
 from NormalizacionDatos import normalizacionDatos
 from Practica.RNNLstmBtc import RedesNeuronalesLstm
 from PlotLibrary import graficoPerdidas, graficoConsolidado
 
-epochs =1
+epochs =200
 mirar_atras = 10
 porcenTrainning = 0.67
 LSTMValue = 1
@@ -88,6 +88,7 @@ datosUlt = escalado.inverse_transform(datos)
 datosUlt = int(datosUlt[-1])
 puntuaciontrain = int(Puntuacion_Train)
 puntuaciontest = int(Puntuacion_Test)
+#print(pronostico)
 pronostico = int(pronostico)
 
 insertDatosFinales(puntuaciontrain, puntuaciontest, pronostico)
