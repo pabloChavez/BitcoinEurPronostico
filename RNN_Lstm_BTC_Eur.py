@@ -8,7 +8,9 @@ from NormalizacionDatos import normalizacionDatos
 from Practica.RNNLstmBtc import RedesNeuronalesLstm
 from PlotLibrary import graficoPerdidas, graficoConsolidado
 
-epochs =200
+tipoPronostico = 1
+diasPronostico = 1
+epochs = 1
 mirar_atras = 10
 porcenTrainning = 0.67
 LSTMValue = 1
@@ -48,7 +50,7 @@ history=model.fit(tX, tY, epochs=epochs, batch_size=1, verbose=1)
 graficoPerdidas(history)
 
 # Prediccion 1 dias
-proximodia = tX[:1]
+proximodia = tX[:diasPronostico]
 proximodia = model.predict(proximodia)
 proximodia = escalado.inverse_transform(proximodia)
 pronostico = np.array(proximodia)
@@ -88,9 +90,13 @@ datosUlt = escalado.inverse_transform(datos)
 datosUlt = int(datosUlt[-1])
 puntuaciontrain = int(Puntuacion_Train)
 puntuaciontest = int(Puntuacion_Test)
-#print(pronostico)
-pronostico = int(pronostico)
 
-insertDatosFinales(puntuaciontrain, puntuaciontest, pronostico)
+if tipoPronostico == 1:
+	pronostico = int(pronostico)
+	insertDatosFinales(puntuaciontrain, puntuaciontest, pronostico)
+	deliveryEmail(puntuaciontrain, puntuaciontest, pronostico, datosUlt)
 
-deliveryEmail(puntuaciontrain, puntuaciontest, pronostico, datosUlt)
+if tipoPronostico == 2:
+	pronostico = pronostico.astype(int)
+	print(pronostico)
+
