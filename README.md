@@ -41,7 +41,7 @@ recomendación: Modificar el número de épocas.
 
 
 Serie temporal en BD
-![image](https://user-images.githubusercontent.com/14248438/121424316-3557c800-c93f-11eb-83c2-07ee42f8db7a.png)
+![image](https://user-images.githubusercontent.com/14248438/121816182-21b2a700-cc48-11eb-8337-c4c09c793a8d.png)
 
 
 Perdidas:
@@ -53,7 +53,13 @@ Datos y Prediccion:
 
 
 Envio de Mensaje:
-![image](https://user-images.githubusercontent.com/14248438/121424415-4c96b580-c93f-11eb-9837-4d3d431bb91f.png)
+![image](https://user-images.githubusercontent.com/14248438/121816139-db5d4800-cc47-11eb-8994-786eb2dd1c77.png)
+
+
+Power BI:
+![image](https://user-images.githubusercontent.com/14248438/121816146-ee701800-cc47-11eb-8d97-8a788f31dbe6.png)
+![image](https://user-images.githubusercontent.com/14248438/121816163-05af0580-cc48-11eb-89bf-b4713f3dd433.png)
+
 
 
 Saludos.
